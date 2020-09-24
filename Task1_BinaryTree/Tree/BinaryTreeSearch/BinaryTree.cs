@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace BinaryTreeSearch
 {
-    public class Class1
+    public class BinaryTree
     {
+        public class Node<T>
+        {
+            public T Data { get; private set; }
+            public Node<T> Left{ get; private set; }
+            public Node<T> Right { get; private set; }
+
+            public Node(T data)
+            {
+                Data = data;
+            }
+
+        }
     }
 }
