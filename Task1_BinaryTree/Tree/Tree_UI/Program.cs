@@ -1,5 +1,6 @@
 ﻿using BinaryTreeSearch;
 using System;
+using System.Collections.Generic;
 
 namespace Tree_UI
 {
@@ -16,11 +17,15 @@ namespace Tree_UI
             tree.Add("Anna", "Physics", DateTime.Now, 8);
             tree.Add("Maria", "Physics", DateTime.Now, 6);
             tree.Add("Lev", "Physics", DateTime.Now, 9);
+            
 
-            var list = tree.GetNodesPrefix();
+            var list = tree.PreOrder();
             foreach(Node<int> tmp in list)
                 Console.WriteLine($"|{tmp.Name}\t{tmp.TestName}\t{tmp.Date.ToShortDateString()} =>\t|{tmp.Result}|");
 
+            var list2 = tree.PreOrderResult();
+            foreach(int tn in list2)
+                Console.WriteLine($"{tn}");
             Console.ReadLine();
         }
     }

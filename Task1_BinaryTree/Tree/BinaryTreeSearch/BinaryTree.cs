@@ -84,9 +84,7 @@ namespace BinaryTreeSearch
         where T : IComparable
     {       
         public Node<T> Root { get; private set; }
-        public int Count { get; private set; }
-
-        /// <summary>
+        public int Count { get; private set; }        /// <summary>
         /// Test completion data
         /// </summary>
         /// <param name="name">Student's name</param>
@@ -106,16 +104,27 @@ namespace BinaryTreeSearch
             Count++;
         }
 
-        public List<Node<T>> GetNodesPrefix()
+        public List<Node<T>> PreOrder()
         {
             if (Root == null)
             {
                 return new List<Node<T>>();
             }
 
-            return GetNodesPrefix(Root);
+            return PreOrder(Root);
         }
-        private List<Node<T>> GetNodesPrefix(Node<T> node)
+
+        public List<T> PreOrderResult()
+        {
+            List<T> list = new List<T>();
+            
+            foreach (Node<T> node in PreOrder())
+                list.Add(node.Result);
+
+            return list;
+        }
+
+        private List<Node<T>> PreOrder(Node<T> node)
         {
             List<Node<T>> list = new List<Node<T>>();
 
@@ -125,48 +134,15 @@ namespace BinaryTreeSearch
 
                 if (node.Left != null)
                 {
-                    list.AddRange(GetNodesPrefix(node.Left));
+                    list.AddRange(PreOrder(node.Left));
                 }
 
                 if (node.Right != null)
                 {
-                    list.AddRange(GetNodesPrefix(node.Right));
+                    list.AddRange(PreOrder(node.Right));
                 }
             }
             return list;
         }
-
-        #region PreOrder
-        /*
-        public List<T> GetPrefix()
-        {
-            if(Root == null)
-            {
-                return new List<T>();
-            }
-
-            return GetPrefix(Root);
-        }
-        private List<T> GetPrefix(Node<T> node)
-        {
-            List<T> list = new List<T>();
-            
-            if(node != null)
-            {
-                list.Add(node.Result);
-
-                if(node.Left != null)
-                {
-                    list.AddRange(GetPrefix(node.Left));
-                }
-
-                if(node.Right != null)
-                {
-                    list.AddRange(GetPrefix(node.Right));
-                }
-            }
-            return list;
-        }*/
-        #endregion
     }
 }
