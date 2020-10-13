@@ -20,12 +20,14 @@ namespace Tree_UI
             
 
             var list = tree.PreOrder();
-            foreach(Node<int> tmp in list)
+            foreach(BinaryTree<int>.Node<int> tmp in list)
                 Console.WriteLine($"|{tmp.Name}\t{tmp.TestName}\t{tmp.Date.ToShortDateString()} =>\t|{tmp.Result}|");
 
             var list2 = tree.PreOrderResult();
             foreach(int tn in list2)
                 Console.WriteLine($"{tn}");
+
+            
             Console.ReadLine();
         }
     }
